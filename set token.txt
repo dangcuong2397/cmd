@@ -1,0 +1,13 @@
+function copyToClipboard(text) {
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+}
+var cookie= document.cookie.match(new RegExp('(^| )JWTToken=([^;]+)'));
+var jwt = ''
+if (cookie) jwt = cookie[2];
+copyToClipboard(`document.cookie = "JWTToken=${jwt};path=/";`)
+
